@@ -16,7 +16,7 @@
 
     <%= f.label :user_id %>
     <!-- Input for user_id start -->
-    <%= f.number_field :user_id, class: user_id_class, placeholder: "Enter user" %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :created_at, @address.user_id), {}, class: "form-control" %>
     <!-- Input for user_id end -->
     <% if user_id_was_invalid %>
       <% address.errors.full_messages_for(:user_id).each do |message| %>
