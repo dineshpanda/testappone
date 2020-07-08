@@ -13,7 +13,7 @@ class Api::V1::AddressesController < Api::V1::GraphitiController
     address = AddressResource.build(params)
 
     if address.save
-      render jsonapi: address, status: 201
+      render jsonapi: address, status: :created
     else
       render jsonapi_errors: address
     end
@@ -33,7 +33,7 @@ class Api::V1::AddressesController < Api::V1::GraphitiController
     address = AddressResource.find(params)
 
     if address.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: address
     end

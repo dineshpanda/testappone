@@ -8,5 +8,4 @@ class Address < ApplicationRecord
   # Validations
 
   # Scopes
-
 end
