@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "addresses#index"
   resources :addresses
   devise_for :users
   resources :users
