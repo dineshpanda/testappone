@@ -1,0 +1,12 @@
+<!-- Form address start -->
+<%= form_with(model: @address, local: true) do |f| %>
+<!-- Form address end -->
+
+  <!-- Label and input for user_id start -->
+  <!-- Input for user_id start -->
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <!-- Input for user_id end -->
+  <!-- Label and input for user_id end -->
+
+  <%= f.submit "Create address", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

@@ -24,7 +24,12 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
 
     if @address.save
-      redirect_to @address, notice: 'Address was successfully created.'
+      message = 'Address was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @address, notice: message
+      end
     else
       render :new
     end
