@@ -2,30 +2,9 @@
 
 <%= form_with(model: address, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for user_id start -->
-  <div class="form-group">
-    <% user_id_class = "form-control" %>
-    <% user_id_was_invalid = address.errors.include?(:user_id) %>
-
-    <% if was_validated %>
-      <% if user_id_was_invalid %>
-        <% user_id_class << " is-invalid" %>
-      <% else %>
-        <% user_id_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :user_id %>
-    <!-- Input for user_id start -->
-    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :created_at, @address.user_id), {}, class: "form-control" %>
-    <!-- Input for user_id end -->
-    <% if user_id_was_invalid %>
-      <% address.errors.full_messages_for(:user_id).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "user_id" start -->
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <!-- Input for "user_id" end -->
   <!-- Label and input for user_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
