@@ -5,7 +5,8 @@ class AddressesController < ApplicationController
 
   # GET /addresses
   def index
-    @addresses = Address.page(params[:page]).per(10)
+    @q = Address.ransack(params[:q])
+    @addresses = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
   end
 
   # GET /addresses/1
