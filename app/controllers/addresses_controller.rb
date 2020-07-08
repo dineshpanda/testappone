@@ -1,4 +1,6 @@
 class AddressesController < ApplicationController
+  before_action :current_user_must_be_address_user, only: [:edit, :update, :destroy] 
+
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
   # GET /addresses
@@ -57,6 +59,14 @@ class AddressesController < ApplicationController
 
 
   private
+
+  def current_user_must_be_address_user
+    set_address
+    unless current_user == @address.user
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_address
       @address = Address.find(params[:id])

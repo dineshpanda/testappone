@@ -19,16 +19,20 @@
 
       <!-- Edit link address start -->
       <div class="col">
-        <%= link_to edit_address_url(address), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @address.user %>
+          <%= link_to edit_address_url(address), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link address end -->
 
       <!-- Delete link address start -->
       <div class="col">
-        <%= link_to address, method: :delete, data: { confirm: "Do you really want to delete this address?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @address.user %>
+          <%= link_to address, method: :delete, data: { confirm: "Do you really want to delete this address?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link address end -->
