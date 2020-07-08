@@ -6,9 +6,7 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd><%= address.user_id %></dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -17,7 +15,6 @@
         <%= link_to_show_or_back address, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link address start -->
       <div class="col">
         <% if current_user == @address.user %>
           <%= link_to edit_address_url(address), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -25,9 +22,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link address end -->
 
-      <!-- Delete link address start -->
       <div class="col">
         <% if current_user == @address.user %>
           <%= link_to address, method: :delete, data: { confirm: "Do you really want to delete this address?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -35,7 +30,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link address end -->
     </div>
   </div>
 

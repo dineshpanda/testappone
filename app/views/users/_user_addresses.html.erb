@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @user.addresses.each do |address| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to address.user_id, address_path(address) %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="user_addresses_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "users/user_addresses_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 
